@@ -20,8 +20,7 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<body>
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -38,11 +37,14 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesiòn') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
-                        <button type="submit" class="dropdown-item">
-                            {{ __('Cerrar Sesión') }}
-                        </button>
                     </form>
                 </div>
             </li>
@@ -67,7 +69,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                           <a href=""  class="nav-link text-dark">
+                           <a href="{{ route('usuarios.create') }}"  class="nav-link text-dark">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>Ingreso</p>
                                 </a>
@@ -109,7 +111,7 @@
 
                     <!-- Roles Mayordomo -->
                     <li class="nav-item">
-                        <a href="{{ asset('AdminLTE-3.2.0/pages/widgets.html') }}" class="nav-link text-success">
+                        <a href="#" class="nav-link text-success">
                             <i class="fas fa-user"></i>&nbsp;
                             <p>Roles Mayordomo</p>
                         </a>
@@ -117,7 +119,7 @@
 
                     <!-- Análisis de Producción -->
                     <li class="nav-item">
-                        <a href="{{ asset('AdminLTE-3.2.0/pages/widgets.html') }}" class="nav-link text-success">
+                        <a href="#" class="nav-link text-success">
                             <i class="fas fa-chart-bar"></i>&nbsp;
                             <p>Análisis de Producción</p>
                         </a>
@@ -139,15 +141,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/simple.html') }}"
-                                    class="nav-link text-dark">
+                                <a href="#" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-tasks"></i>
                                     <p>Actividades</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ asset('AdminLTE-3.2.0/pages/tables/data.html') }}"
-                                    class="nav-link text-dark">
+                                <a href="#" class="nav-link text-dark">
                                     <i class="nav-icon fas fa-file-invoice-dollar"></i>
                                     <p>Contable</p>
                                 </a>
@@ -188,7 +188,6 @@
     <script src="{{ asset('AdminLTE-3.2.0/dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('AdminLTE-3.2.0/dist/js/demo.js') }}"></script>
-</div><!-- /.wrapper -->
 </body>
 
 </html>

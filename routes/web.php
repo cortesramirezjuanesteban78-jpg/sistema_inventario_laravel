@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usuariocontroller;
+use App\Http\Controllers\ProveedorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +27,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+Route::middleware(['auth'])->group(function () {
+    Route::get('/formusuarios',  [Usuariocontroller::class, 'create'])->name('usuarios.create');
+    Route::post('/formusuarios', [Usuariocontroller::class, 'store'])->name('usuarios.store');
+    Route::get('/formproveedores',  [ProveedorController::class, 'create'])->name('proveedores.create');
+    Route::post('/formproveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
+});
