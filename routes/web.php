@@ -30,6 +30,10 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth'])->group(function () {
     Route::get('/formusuarios',  [Usuariocontroller::class, 'create'])->name('usuarios.create');
     Route::post('/formusuarios', [Usuariocontroller::class, 'store'])->name('usuarios.store');
+    Route::get('/listausuarios', [Usuariocontroller::class, 'index'])->name('usuarios.index');
+    Route::put('/usuarios/{id}', [Usuariocontroller::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{id}', [Usuariocontroller::class, 'destroy'])->name('usuarios.destroy');
     Route::get('/formproveedores',  [ProveedorController::class, 'create'])->name('proveedores.create');
     Route::post('/formproveedores', [ProveedorController::class, 'store'])->name('proveedores.store');
 });
+
